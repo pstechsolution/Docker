@@ -1,0 +1,7 @@
+Docker Stack deploy -c app.yml mystack
+docker stack ps mystack
+docker volume ls
+
+docker service  create --replicas 3 -- name redis
+
+

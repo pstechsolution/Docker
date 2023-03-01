@@ -1,0 +1,49 @@
+#Container Archestration tools
+1.Docker swarm
+2.Kubernates
+3.mesios
+4.openshif
+
+these tools always work on cluster. set of VM where docker is installed 
+
+Orchestration --> Master and node set up or Manager and worker node setup.
+
+4 feature : 
+ 1. Multiple replicase from same image
+ 2. load balancing /distributes
+ 3. high availability
+ 4. rolling update
+ 
+Overlay network--> 
+
+
+Docker Swarm
+-----------
+Docker swarm init     # -P not work in swarm 
+
+docker swarm join --token -- Ipaddress
+
+docker node ls
+
+the only one object  --> service  --> create many replicas 
+
+docker service create --name svc1 --replicas 5 nginx
+
+docker service ls
+docker ps svc1
+
+RAFT --> a consensus algorithm designed as an alternative to the Paxos family of algorithms
+
+docker service scale svc1 = 2
+docker service rm svc1
+
+docker swarm leave
+
+docker service update image sonal04/sampelappp:v2 mysvc
+docker service rollback mysvc
+
+****** Auto scale not there in Docker************
+
+
+
+

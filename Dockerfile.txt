@@ -1,0 +1,20 @@
+# this is cokerfile to deploy html code in nginx
+FROM ubuntu
+ENV pkgname nginx
+ENV dirname chandra
+RUN apt-get update
+RUN apt-get install $pkgname -Y
+RUN mkdir $dirname
+copy index.html /var/www/html/
+add file *.tra.gz /var/www/html/
+FROM busybox
+CMD ['sh']
+
+
+# docker build -t myImage:01 .
+# docker run -itd -name base01 myimage:01 ping -c 100 google.com
+FROM busybox
+ENTRYPOINT ['/bin/ping']
+
+EXPOSE 80
+CMD["nginx","-g","daemonoff;"]

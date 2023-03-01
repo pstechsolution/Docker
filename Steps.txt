@@ -1,0 +1,78 @@
+
+docker info
+# Images never in Local
+# Images are mainted --> called Registry
+
+docker images
+docker ps -a --> will show all process
+docker pull ubuntu   # RegistryName/Repository / Image name : tagname
+docker pull ubuntu:18.04
+docker run ubuntu --> will give container and give it to us.
+exit -->  container will exit and will stop.
+-it --> Interication termenated
+
+forgound mode (-it) --> Container will be launched /running user will be attached
+detached mode (-d)
+
+docker run --name containerName -it ubuntu
+come out from conatiner ctrl pq
+
+docker attached container_id --> back on the os conatiner
+
+docker start  container_id
+
+----nginx App image---
+
+docker run nginx
+docker run --name containerNgnix -d ngnix
+
+
+docker exec name_of_Container 
+docker exec cont1 ls/temp
+
+docker inspect --> will return JSON
+docker stats --> status of the conatiner
+
+docker execc -it cont1 bash
+
+--------------------------
+---- PORT MAPPTING / PORT FORWARD -----
+
+#Once contianer create we can't do the port mapping in docker
+
+docker run --name web -d -p 8989:80 ngnix  # 80 is the traget port , 8989 is the ec2 system port -P radom port docker will do the mapping.
+docker run --name web -d -P ngnix 
+docker run --name web -d -P  httpd / ngnix  # httpd --> Apache Web server
+
+
+----Remove the conatiner -----
+docker rm -f$(docker ps -aq)
+docker image rm -f image_id
+
+-----Create volume mapping-----  # volume will make the changes without downtime of the app
+docker volume ls
+docker volume create myvol -o size 
+docker volume inspect volume_name
+docker run -it --name u1 -v myvol:/tmp ubuntu
+mount -type = bind 
+---docker file execution----
+docker buid -t getting-started .
+docker run -dp 3000:3000 getting-started
+
+
+Docker history image_id
+
+docker pull lerndevops/samples:springboot-app
+docker pull 
+
+docker run -d -p 80:80 lerndevops/samples:springboot-app
+
+
+docker run -d -P lerndevops/samples:springboot-app
+
+# -P will create auto port
+
+docker ps --> will show the running process
+
+docker stop CONTAINER_ID
+docker rm CONTAINER_ID
